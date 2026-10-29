@@ -117,10 +117,10 @@
     </table>
   </td>
   <td class="crm-vol-need-notes">
-    <a href="#" class="crm-vol-edit-notes crm-hover-button action-item" title="{ts escape='htmlattribute' domain='org.civicrm.volunteer'}Notes for volunteers signing up to this shift{/ts}">
-      <span class="crm-vol-notes-indicator"></span>
-      <span class="crm-vol-notes-label">{ts domain='org.civicrm.volunteer'}Notes{/ts}</span>
-    </a>
+    <button type="button" class="crm-vol-edit-notes" title="{ts escape='htmlattribute' domain='org.civicrm.volunteer'}Notes for volunteers signing up to this shift{/ts}">
+      <i class="crm-i fa-sticky-note-o" role="img" aria-hidden="true"></i>
+      <span class="crm-vol-notes-label">{ts domain='org.civicrm.volunteer'}Add notes{/ts}</span>
+    </button>
   </td>
   <td><input type="checkbox" name="visibility_id" value="<%= visibilityValue %>"></td>
   <td><input type="checkbox" name="is_active" value="1"></td>

@@ -265,18 +265,40 @@
 .crm-vol-need-notes {
   white-space: nowrap;
   width: 1%;
-}
-.crm-vol-need-notes .crm-vol-notes-indicator {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  margin-right: 4px;
-  background: transparent;
   vertical-align: middle;
 }
-.crm-vol-need-notes .crm-vol-has-notes .crm-vol-notes-indicator {
-  background: #2a67b0;
+/* Real <button> so this is not a crm-hover-button text link. Riverlea styles
+   [type=button] as a primary control; these rules keep it compact in the table
+   and still look like a button if the dialog is outside .crm-container. */
+#crm-volunteer-dialog .crm-vol-need-notes .crm-vol-edit-notes,
+.crm-vol-need-notes .crm-vol-edit-notes {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  margin: 0;
+  height: auto;
+  min-height: 2em;
+  padding: 0.3em 0.75em;
+  border: 1px solid transparent;
+  border-radius: var(--crm-btn-radius, 3px);
+  background: var(--crm-primary-color, #1b6b93);
+  color: var(--crm-primary-text-color, #fff);
+  font-size: var(--crm-font-size, 13px);
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+  white-space: nowrap;
+}
+#crm-volunteer-dialog .crm-vol-need-notes .crm-vol-edit-notes:hover,
+#crm-volunteer-dialog .crm-vol-need-notes .crm-vol-edit-notes:focus,
+.crm-vol-need-notes .crm-vol-edit-notes:hover,
+.crm-vol-need-notes .crm-vol-edit-notes:focus {
+  background: var(--crm-primary-hover-color, #155a7c);
+  color: var(--crm-primary-hover-text-color, #fff);
+  text-decoration: none;
+}
+.crm-vol-need-notes .crm-vol-edit-notes.crm-vol-has-notes {
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.35);
 }
 .crm-vol-define-notes-dialog textarea {
   width: 100%;

@@ -65,7 +65,9 @@
 
       updateNotesButton: function() {
         var notes = $.trim(this.model.get('notes') || '');
-        this.$('.crm-vol-edit-notes').toggleClass('crm-vol-has-notes', notes !== '');
+        var hasNotes = notes !== '';
+        this.$('.crm-vol-edit-notes').toggleClass('crm-vol-has-notes', hasNotes);
+        this.$('.crm-vol-notes-label').text(hasNotes ? ts('Edit notes') : ts('Add notes'));
       },
 
       saveNeedField: function(field_name, value) {
