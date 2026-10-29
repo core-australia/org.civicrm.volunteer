@@ -5,3 +5,16 @@
  {
   display: none;
 }
+
+.crm-volunteer-signup-summary .crm-vol-inline-detail,
+.crm-volunteer-signup-summary .crm-vol-inline-notes {
+  display: block;
+  margin-top: 0.35em;
+  font-size: 0.92em;
+  line-height: 1.4;
+  font-weight: normal;
+  color: #767676;
+}
+.crm-volunteer-signup-summary .crm-vol-inline-detail p {
+  color: inherit;
+}

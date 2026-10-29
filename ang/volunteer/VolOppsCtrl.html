@@ -152,18 +152,15 @@ Required vars: volOppData(), searchParams
           <tr ng-repeat="need in shoppingCart" role="row" class="crm-vol-opp-cart-need-{{need.id}}" ng-click="volOppCartRowClick($event, need)">
             <td class="crm-vol-opp-project" data-label="{{:: ts('Project') }}">
             {{need.project.title}}
-              <i class="crm-i fa-comment crm-vol-detail-icon"
-                 role="img"
-                 title="{{:: ts('Project details') }}"
-                 ng-show="hasProjectDescription(need.project)"
-                 ng-click="showProjectDescription(need.project); $event.stopPropagation()"></i>
+              <div class="crm-vol-inline-detail" ng-if="hasProjectDescription(need.project)" ng-bind-html="need.project.description"></div>
+              <div class="crm-vol-inline-detail" ng-if="need.project.campaign_title"><strong>{{:: ts('Campaign:') }}</strong> {{need.project.campaign_title}}</div>
+              <div class="crm-vol-inline-detail" ng-if="need.project.location.street_address">{{need.project.location.street_address}}</div>
+              <div class="crm-vol-inline-detail" ng-if="need.project.location.city">{{need.project.location.city}}</div>
+              <div class="crm-vol-inline-detail" ng-if="need.project.location.postal_code">{{need.project.location.postal_code}}</div>
           </td>
           <td class="crm-vol-opp-role" data-label="{{:: ts('Role') }}">{{need.role_label}}
-              <i class="crm-i fa-comment crm-vol-detail-icon"
-                 role="img"
-                 title="{{:: ts('Role details') }}"
-                 ng-show="hasRoleDescription(need) || hasNeedNotes(need)"
-                 ng-click="showRoleDescription(need); $event.stopPropagation()"></i>
+              <div class="crm-vol-inline-detail" ng-if="hasRoleDescription(need)" ng-bind-html="need.role_description"></div>
+              <div class="crm-vol-inline-notes" ng-if="hasNeedNotes(need)">{{need.notes}}</div>
           </td>
           <td class="crm-vol-opp-time" data-label="{{:: ts('Time') }}">{{need.display_time}}</td>
           <td class="crm-vol-opp-toggle" data-label="{{:: ts('Remove') }}">
@@ -193,10 +190,6 @@ Required vars: volOppData(), searchParams
     {{:: ts('No results found. Please try different search criteria.') }}
   </div>
   <div class="crm-vol-opp-results" ng-show="_.size(volOppData()) > 0">
-    <p class="description">
-      {{:: ts('For additional project, role, or shift detail, click the corresponding detail icon in the table below.') }}
-      <i class="crm-i fa-comment crm-vol-detail-icon" role="img" aria-hidden="true"></i>
-    </p>
     <table class="display dataTable no-footer" role="grid">
       <thead>
       <tr role="row">
@@ -212,21 +205,18 @@ Required vars: volOppData(), searchParams
         <tr ng-repeat="need in volOppData()" role="row" class="crm-vol-opp-need-{{need.id}}" ng-class="{'crm-vol-opp-full': need.is_full}" ng-click="volOppOpportunityRowClick($event, need)">
           <td class="crm-vol-opp-project" data-label="{{:: ts('Project') }}">
           {{need.project.title}}
-            <i class="crm-i fa-comment crm-vol-detail-icon"
-               role="img"
-               title="{{:: ts('Project details') }}"
-               ng-show="hasProjectDescription(need.project) || hasNeedNotes(need)"
-               ng-click="showProjectDescription(need.project, need); $event.stopPropagation()"></i>
+            <div class="crm-vol-inline-detail" ng-if="hasProjectDescription(need.project)" ng-bind-html="need.project.description"></div>
+            <div class="crm-vol-inline-detail" ng-if="need.project.campaign_title"><strong>{{:: ts('Campaign:') }}</strong> {{need.project.campaign_title}}</div>
+            <div class="crm-vol-inline-detail" ng-if="need.project.location.street_address">{{need.project.location.street_address}}</div>
+            <div class="crm-vol-inline-detail" ng-if="need.project.location.city">{{need.project.location.city}}</div>
+            <div class="crm-vol-inline-detail" ng-if="need.project.location.postal_code">{{need.project.location.postal_code}}</div>
         </td>
         <td class="crm-vol-opp-beneficiary" data-label="{{:: ts('With') }}">
           <span class="beneficiary" ng-repeat="ben in need.project.beneficiaries">{{ben.display_name}}</span>
         </td>
         <td class="crm-vol-opp-role" data-label="{{:: ts('Role') }}">{{need.role_label}}
-            <i class="crm-i fa-comment crm-vol-detail-icon"
-               role="img"
-               title="{{:: ts('Role details') }}"
-               ng-show="hasRoleDescription(need) || hasNeedNotes(need)"
-               ng-click="showRoleDescription(need); $event.stopPropagation()"></i>
+            <div class="crm-vol-inline-detail" ng-if="hasRoleDescription(need)" ng-bind-html="need.role_description"></div>
+            <div class="crm-vol-inline-notes" ng-if="hasNeedNotes(need)">{{need.notes}}</div>
         </td>
         <td class="crm-vol-opp-time" data-label="{{:: ts('Time') }}">{{need.display_time}}</td>
         <td class="crm-vol-opp-slots" data-label="{{:: ts('Slots') }}">

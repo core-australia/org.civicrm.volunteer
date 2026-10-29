@@ -6,11 +6,6 @@
     </p>
   </div>
 
-  <p class="description">
-    {ts domain='org.civicrm.volunteer'}For additional project or role detail, click the corresponding detail icon in the table below.{/ts}
-    <span class="icon ui-icon-comment"></span>
-  </p>
-
   <div class="crm-volunteer-signup-summary">
     <table>
       <tr>
@@ -24,18 +19,17 @@
           <td class="crm-vol-opp-project">
             {$volunteerNeed.project.title}
             {if $volunteerNeed.project.description}
-              <span class="icon ui-icon-comment crm-vol-description">
-                <div class="vol-project-description-wrapper">{$volunteerNeed.project.description}</div>
-              </span>
+              <div class="crm-vol-inline-detail">{$volunteerNeed.project.description}</div>
             {/if}
           </td>
           <td class="crm-vol-opp-beneficiary">{$volunteerNeed.project.beneficiaries}</td>
           <td class="crm-vol-opp-role">
             {$volunteerNeed.role_label}
             {if $volunteerNeed.role_description}
-              <span class="icon ui-icon-comment crm-vol-description">
-                <div class="vol-role-description-wrapper">{$volunteerNeed.role_description}</div>
-              </span>
+              <div class="crm-vol-inline-detail">{$volunteerNeed.role_description}</div>
+            {/if}
+            {if $volunteerNeed.notes}
+              <div class="crm-vol-inline-notes">{$volunteerNeed.notes|escape|nl2br}</div>
             {/if}
           </td>
           <td class="crm-vol-opp-time">{$volunteerNeed.display_time}</td>

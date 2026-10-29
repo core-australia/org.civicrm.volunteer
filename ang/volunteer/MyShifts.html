@@ -4,10 +4,6 @@
     <p>
       {{:: ts('Below are the volunteer shifts you have signed up for. You can cancel a shift you no longer plan to work.') }}
     </p>
-    <p ng-show="hasShifts()">
-      {{:: ts('For additional project, role, or shift detail, click the corresponding detail icon in the table below.') }}
-      <i class="crm-i fa-comment crm-vol-detail-icon" role="img" aria-hidden="true"></i>
-    </p>
   </div>
 
   <div class="crm-vol-buttons">
@@ -42,11 +38,11 @@
       <tr ng-repeat="shift in shifts track by shift.id" class="crm-vol-my-shift-row">
         <td class="crm-vol-opp-project" data-label="{{:: ts('Project') }}">
           {{ shift.project.title || shift.project_title }}
-          <i class="crm-i fa-comment crm-vol-detail-icon"
-             role="img"
-             title="{{:: ts('Project details') }}"
-             ng-show="hasProjectDescription(shift.project)"
-             ng-click="showProjectDescription(shift.project)"></i>
+          <div class="crm-vol-inline-detail" ng-if="hasProjectDescription(shift.project)" ng-bind-html="shift.project.description"></div>
+          <div class="crm-vol-inline-detail" ng-if="shift.project.campaign_title"><strong>{{:: ts('Campaign:') }}</strong> {{shift.project.campaign_title}}</div>
+          <div class="crm-vol-inline-detail" ng-if="shift.project.location.street_address">{{shift.project.location.street_address}}</div>
+          <div class="crm-vol-inline-detail" ng-if="shift.project.location.city">{{shift.project.location.city}}</div>
+          <div class="crm-vol-inline-detail" ng-if="shift.project.location.postal_code">{{shift.project.location.postal_code}}</div>
         </td>
         <td class="crm-vol-opp-beneficiary" data-label="{{:: ts('With') }}">
           <span class="beneficiary" ng-repeat="ben in shift.beneficiaries">{{ ben.display_name }}</span>
@@ -54,11 +50,8 @@
         </td>
         <td class="crm-vol-opp-role" data-label="{{:: ts('Role') }}">
           {{ shift.role_label }}
-          <i class="crm-i fa-comment crm-vol-detail-icon"
-             role="img"
-             title="{{:: ts('Role details') }}"
-             ng-show="hasRoleDescription(shift) || hasNeedNotes(shift)"
-             ng-click="showRoleDescription(shift)"></i>
+          <div class="crm-vol-inline-detail" ng-if="hasRoleDescription(shift)" ng-bind-html="shift.role_description"></div>
+          <div class="crm-vol-inline-notes" ng-if="hasNeedNotes(shift)">{{shift.notes}}</div>
         </td>
         <td class="crm-vol-opp-time" data-label="{{:: ts('Time') }}">{{ shift.display_time || formatWhen(shift) }}</td>
         <td class="crm-vol-my-shift-actions" data-label="{{:: ts('Actions') }}">
