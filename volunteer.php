@@ -36,6 +36,7 @@ use CRM_Volunteer_ExtensionUtil as E;
  */
 function volunteer_civicrm_config(&$config) {
   _volunteer_civix_civicrm_config($config);
+  CRM_Volunteer_Checksum::boot();
 }
 
 /**
@@ -324,7 +325,7 @@ function _volunteer_civicrm_pageRun_CRM_Event_Page_EventInfo(&$page) {
         //VOL-190: Hide search pane in "shopping cart" for low role count projects
         $hideSearch = ($openNeeds['count'] < 10) ? "hideSearch=always" : (($openNeeds['count'] < 25) ? "hideSearch=1" : "hideSearch=0");
         $url = CRM_Utils_System::url('civicrm/vol/',
-          NULL, // query string
+          "project={$project->id}&dest=event&{$hideSearch}",
           FALSE, // absolute?
           "/volunteer/opportunities?project={$project->id}&dest=event&{$hideSearch}", // fragment
           TRUE, // Frontend
