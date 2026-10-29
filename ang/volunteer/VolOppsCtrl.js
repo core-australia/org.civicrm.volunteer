@@ -227,9 +227,9 @@
       }
     };
 
-    /** Mobile: tap anywhere on the opportunity card to sign up (toggle), except icons/checkbox. */
+    /** Click/tap the opportunity row to toggle signup, except checkbox/links. */
     $scope.volOppOpportunityRowClick = function ($event, need) {
-      if (!volOppUseMobileRowTap()) {
+      if (need.is_full) {
         return;
       }
       if ($($event.target).closest('span.icon, i.crm-vol-detail-icon, input, a, button, label').length) {

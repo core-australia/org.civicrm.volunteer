@@ -494,6 +494,15 @@ span.crm-button-text {
   background: rgba(255, 255, 0, 0.1);
 }
 
+.crm-vol-opp-results tbody tr:not(.crm-vol-opp-full) {
+  cursor: pointer;
+}
+
+.crm-vol-opp-results tr.crm-vol-opp-selected,
+.crm-vol-opp-results tr.crm-vol-opp-selected td {
+  background-color: #e6f3ea;
+}
+
 .crm-vol-opp-results tr.crm-vol-opp-full td {
   color: #999;
   background-color: #f5f5f5;

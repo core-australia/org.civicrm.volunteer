@@ -202,7 +202,7 @@ Required vars: volOppData(), searchParams
       </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="need in volOppData()" role="row" class="crm-vol-opp-need-{{need.id}}" ng-class="{'crm-vol-opp-full': need.is_full}" ng-click="volOppOpportunityRowClick($event, need)">
+        <tr ng-repeat="need in volOppData()" role="row" class="crm-vol-opp-need-{{need.id}}" ng-class="{'crm-vol-opp-full': need.is_full, 'crm-vol-opp-selected': need.inCart}" ng-click="volOppOpportunityRowClick($event, need)">
           <td class="crm-vol-opp-project" data-label="{{:: ts('Project') }}">
           {{need.project.title}}
             <div class="crm-vol-inline-detail" ng-if="hasProjectDescription(need.project)" ng-bind-html="need.project.description"></div>
