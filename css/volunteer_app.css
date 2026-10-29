@@ -184,6 +184,27 @@
   margin: 0 1em;
 }
 
+/* Compact Volunteers Needed / time / minutes. Riverlea ignores size= and
+   often sets a large min-width on .crm-form-text, so width alone is not enough. */
+#crm-volunteer-dialog #crm-vol-define-needs-table input[name="quantity"],
+#crm-vol-define-needs-table input[name="quantity"],
+#crm-volunteer-dialog #crm-vol-define-needs-table .time_components input[name="duration"],
+#crm-vol-define-needs-table .time_components input[name="duration"] {
+  width: 4em;
+  min-width: 4em;
+  max-width: 4em;
+  box-sizing: border-box;
+}
+#crm-volunteer-dialog #crm-vol-define-needs-table .time_components input[name="display_start_time"],
+#crm-vol-define-needs-table .time_components input[name="display_start_time"],
+#crm-volunteer-dialog #crm-vol-define-needs-table .time_components input[name="display_end_time"],
+#crm-vol-define-needs-table .time_components input[name="display_end_time"] {
+  width: 8em;
+  min-width: 8em;
+  max-width: 8em;
+  box-sizing: border-box;
+}
+
 /*
  * Since we don't know where CiviVolunteer will be installed, we can't specify a
  * relative path to core's white icon set. This stanza is here to counteract rules
